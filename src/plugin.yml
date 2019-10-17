@@ -1,0 +1,5 @@
+name: advancedplayerinfo
+main: com.ipedg.minecraft.advancedplayrinfo.main
+version: 1.0
+commands:
+  timeattm:

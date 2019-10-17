@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact name="advancedplayerinfo:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/advancedplayerinfo_jar</output-path>
+    <root id="root">
+      <element id="archive" name="advancedplayerinfo.jar">
+        <element id="module-output" name="advancedplayerinfo" />
+      </element>
+    </root>
+  </artifact>
+</component>
