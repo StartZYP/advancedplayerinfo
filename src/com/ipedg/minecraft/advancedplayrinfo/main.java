@@ -13,8 +13,6 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.File;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,6 +36,7 @@ public class main extends JavaPlugin implements Listener {
     public void PlayerJoinGame(PlayerJoinEvent event){
         String name = event.getPlayer().getName();
         PlayerInfo playerInfo = DaoTool.GetPlayer(name);
+        playerInfo.setPlayerName(name);
         //从数据库查询玩家已经在线时长
         onlineplayer.put(event.getPlayer().getName(),playerInfo);
     }
@@ -84,8 +83,17 @@ public class main extends JavaPlugin implements Listener {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         String name = sender.getName();
         if (onlineplayer.containsKey(name)&&label.equalsIgnoreCase("timeattm")){
+            PlayerInfo playerInfo = onlineplayer.get(name);
             sender.sendMessage("§e§l您的名字为：§4§l"+name);
+            sender.sendMessage("§5§l你的编号: §3§l["+Integer.parseInt(playerInfo.getPlayerId())+100+"]");
             sender.sendMessage("§2§l您总共游玩时间为:§d§l"+onlineplayer.get(name).getOnlinetime()+"分钟");
+        }else if (onlineplayer.containsKey(name)&&label.equalsIgnoreCase("tmplayer")&&args.length==1){
+            PlayerInfo playerInfo = DaoTool.GetIdPlayer(args[0]);
+            if (playerInfo!=null){
+                sender.sendMessage("§6§l该玩家名字为："+playerInfo.getPlayerName());
+            }else {
+                sender.sendMessage("§4§l没有该玩家");
+            }
         }
         return super.onCommand(sender, command, label, args);
     }

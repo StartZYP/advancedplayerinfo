@@ -8,6 +8,14 @@ package com.ipedg.minecraft.advancedplayrinfo.tools.dao;
 public class PlayerInfo {
     private String PlayerId;
     private Long onlinetime;
+    private String PlayerName;
+
+
+    public PlayerInfo(String playerId, Long onlinetime, String playerName) {
+        PlayerId = playerId;
+        this.onlinetime = onlinetime;
+        PlayerName = playerName;
+    }
 
     public PlayerInfo(String playerId, Long onlinetime) {
         PlayerId = playerId;
@@ -36,5 +44,13 @@ public class PlayerInfo {
 
     public void setOnlinetime(Long onlinetime) {
         this.onlinetime = onlinetime;
+    }
+
+    public String getPlayerName() {
+        return PlayerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        PlayerName = playerName;
     }
 }

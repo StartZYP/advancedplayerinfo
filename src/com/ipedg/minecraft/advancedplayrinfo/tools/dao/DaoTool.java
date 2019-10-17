@@ -73,5 +73,23 @@ public class DaoTool {
         return playerInfo;
     }
 
+    public static PlayerInfo GetIdPlayer(String ID){
+        PlayerInfo playerInfo = null;
+        try {
+            connection.setAutoCommit(false);
+            statement = connection.createStatement();
+            String GetSuperGroupSql = "select * from myTable where ID='"+ID+"'";
+            ResultSet rs = statement.executeQuery(GetSuperGroupSql);
+            while (rs.next()){
+                playerInfo = new PlayerInfo(rs.getString("ID"),rs.getLong("OnlineTime"),rs.getString("PlayerName"));
+            }
+            rs.close();
+            statement.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return playerInfo;
+    }
+
 
 }
