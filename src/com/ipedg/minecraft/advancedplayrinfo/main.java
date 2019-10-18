@@ -85,7 +85,7 @@ public class main extends JavaPlugin implements Listener {
         if (onlineplayer.containsKey(name)&&label.equalsIgnoreCase("timeattm")){
             PlayerInfo playerInfo = onlineplayer.get(name);
             sender.sendMessage("§e§l您的名字为：§4§l"+name);
-            sender.sendMessage("§5§l你的编号: §3§l["+Integer.parseInt(playerInfo.getPlayerId())+100+"]");
+            sender.sendMessage("§5§l你的编号: §3§l["+playerInfo.getPlayerId()+"]");
             sender.sendMessage("§2§l您总共游玩时间为:§d§l"+onlineplayer.get(name).getOnlinetime()+"分钟");
         }else if (onlineplayer.containsKey(name)&&label.equalsIgnoreCase("tmplayer")&&args.length==1){
             PlayerInfo playerInfo = DaoTool.GetIdPlayer(args[0]);

@@ -58,7 +58,7 @@ public class DaoTool {
             String GetSuperGroupSql = "select * from myTable where PlayerName='"+PlayerName+"'";
             ResultSet rs = statement.executeQuery(GetSuperGroupSql);
             while (rs.next()){
-                playerInfo = new PlayerInfo(rs.getString("ID"),rs.getLong("OnlineTime"));
+                playerInfo = new PlayerInfo(rs.getString("ID"),rs.getLong("OnlineTime"),rs.getString("PlayerName"));
             }
             rs.close();
             statement.close();
@@ -66,9 +66,10 @@ public class DaoTool {
             e.printStackTrace();
         }
         if (playerInfo==null){
-            System.out.println("为空");
+            //System.out.println("为空q");
             AddDate(PlayerName,1L);
-            playerInfo = new PlayerInfo(PlayerName,1L);
+            playerInfo = GetPlayer(PlayerName);
+            //System.out.println(playerInfo);
         }
         return playerInfo;
     }
@@ -90,6 +91,5 @@ public class DaoTool {
         }
         return playerInfo;
     }
-
 
 }
